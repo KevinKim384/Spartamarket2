@@ -42,6 +42,9 @@ def signup(request):
         serializer.save()
         return Response({'message': '회원가입에 성공하셨습니다.'}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+```
+![회원가입](https://github.com/user-attachments/assets/1bd0fee4-3a22-4997-8d1c-11a5fb36c91f)
+```
 #---------------------------------------------------------------------------------------------------
 # 로그인
 @api_view(['POST'])
@@ -61,6 +64,9 @@ def login(request):
             }, status=200)
         else:
             return JsonResponse({'error': '이메일 또는 비밀번호가 올바르지 않습니다.'}, status=status.HTTP_400_BAD_REQUEST)
+```
+![로그인](https://github.com/user-attachments/assets/979ac1d2-b0cf-4e7c-9337-72cc8deed9b9)
+```
 #---------------------------------------------------------------------------------------------------
 # 로그아웃 
 @api_view(['POST'])
@@ -94,6 +100,8 @@ def user_profile(request, username):
     else:
         return Response({"error": "다시 시도해 주세요"}, status=status.HTTP_400_BAD_REQUEST)
 ```
+![프로필 조회](https://github.com/user-attachments/assets/6186ce7e-b59b-4e6e-a693-9631cb35bd7e)
+
 # 2. 상품 관련 기능 및 조건
 ```
 #---------------------------------------------------------------------------------------------------
@@ -117,6 +125,9 @@ class ProductListAPIView(APIView):
                 return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+```
+![상품 조회](https://github.com/user-attachments/assets/3ceccee3-6091-4da9-bb5f-94bc9c3e10a7)
+```
 #---------------------------------------------------------------------------------------------------
 # 작성자 상품 목록 조회 / 수정 / 삭제
 class ProductDetailAPIView(APIView):
@@ -146,6 +157,10 @@ class ProductDetailAPIView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 ```
+조회 및 조작, 삭제
+![스크린샷 2024-12-25 174134](https://github.com/user-attachments/assets/6f07cf73-1e62-4e1e-89b7-dc8ff9674b8d)
+
+![스크린샷 2024-12-26 184330](https://github.com/user-attachments/assets/f7d38bb7-a506-4890-b236-3888bf558285)
 
 # 3. 기술 스텍
 - 언어: Python 3.10+
